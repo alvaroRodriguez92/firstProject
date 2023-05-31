@@ -1,0 +1,22 @@
+.principal{
+    background-color: #efefef;
+}
+
+.usuario{
+    color:rgb(87, 151, 82);
+}
+
+.mensajeRegistro{
+    font-size:1.2rem;
+}
+
+.sinEstilo{
+    list-style-type:none;
+    margin:20px;
+}
+
+.tituloCentrado{
+    text-align: center;
+    padding:32px;
+}
+
