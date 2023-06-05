@@ -13,7 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Buscador from "../Buscador/Buscador";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 const pages = [
   { nombre: "Products", link: "/products" },
@@ -24,9 +25,11 @@ const pages = [
 const settings = ["Logout"];
 
 export default function Navmui() {
-  const user = null;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const {logout, user} = useAuthContext();
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,11 +51,12 @@ export default function Navmui() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Link to="/" style={{textDecoration:'none'}}>
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -65,6 +69,7 @@ export default function Navmui() {
           >
             BlueMania
           </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -124,14 +129,15 @@ export default function Navmui() {
           <Buscador />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
+              <Link to={page.link} style={{textDecoration:'none'}}>
               <Button
                 key={page.nombre}
-                href={page.link}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.nombre}
               </Button>
+              </Link>
             ))}
           </Box>
 
@@ -159,7 +165,7 @@ export default function Navmui() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={logout}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

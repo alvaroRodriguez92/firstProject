@@ -1,4 +1,5 @@
 import { useContext, useState, createContext } from "react";
+import {useNavigate} from "react-router-dom"
 
 const AuthContext = createContext({
   login: () => {},
@@ -10,6 +11,8 @@ const AuthContext = createContext({
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const navigate = useNavigate()
 
   //Aqui el useFetch --> const {response,error} = useFetch(url,options)
 
@@ -24,13 +27,15 @@ export default function AuthContextProvider({ children }) {
         setUser(values);
         await new Promise((resolve) => setTimeout(resolve, 2000));
         actions.resetForm();
-        alert("Logueadooo")
+        alert("Login exitoso")
     }
   }
 
   function logout() {
     setUser(null);
+    navigate("/")
   }
+
   const value = {
     user,
     errorMessage,

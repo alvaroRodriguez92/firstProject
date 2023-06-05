@@ -4,7 +4,7 @@ import Newsletter from "../../components/Newsletter/Newsletter";
 import Privacidad from "../../components/Privacidad/Privacidad";
 import {Grid, Box} from "@mui/material";
 import Navmui from "../../components/Navmui/Navmui";
-import Categories from "../../components/Categories/Categories";
+import Category from "../../components/Category/Category";
 
 
 export default function Products() {
@@ -15,8 +15,7 @@ export default function Products() {
       <header>
       <Navmui/>
       </header>
-
-        <Categories/>
+        <Category/>
       
       <Garantias size={48} color={"pink"} />
       <footer>

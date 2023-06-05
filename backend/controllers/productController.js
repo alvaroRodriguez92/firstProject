@@ -4,27 +4,20 @@ const path= require('path')
 const productController={}
 
  
-productController.addProducto  = async (req, res) => {
-  const { nombreProducto, detallesProducto, imagen } = req.body;
-  console.log(req.body);
-  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-  if (!nombreProducto || !detallesProducto || !imagen)
-    return res.status(400).send("Error al recibir el body");
-  // Buscamos el usuario en la base de datos
-  try {
-    const product = await dao.getProductByReference(referencia);
-    // Si existe el usuario respondemos con un 409 (conflict)
-    if (product.length > 0) return res.status(409).send("producto ya registrado");
-    // Si no existe lo registramos
-    const addProduct = await dao.getProductByReference(referencia);
-    if (addUser)
-      return res.send(`Usuario ${firstname} con id: ${addUser} registrado`);
-  } catch (e) {
-    console.log(e.message);
-  }
+productController.getProductsByCategory = async (req, res)=>{
+    const category = await dao.getProductsByCategory(req.params.categoria)
+    try{
+        if(!category){
+            return res.status(400).send("No se ha encontrado categoria");
+        }
+        return res.send(category)
 
-};
 
+    } catch (e){
+      console.log(e.message);
+      return res.status(400).send(e.message);
+    }
+}
 
 // controlador para subir una imagen a nuestro servidor y guardar el path en la base de datos.
 productController.uploadImage = async (req, res) => {
@@ -59,7 +52,7 @@ productController.uploadImage = async (req, res) => {
   };
 
   // Controlador para obtener una imagen por su id
-controller.getImageById = async (req, res) => {
+productController.getImageById = async (req, res) => {
   try {
     // Buscamos si el id de la imagen existe en la base de datos
     const image = await dao.getImageById(req.params.id);

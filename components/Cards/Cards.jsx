@@ -21,8 +21,9 @@ export default function Cards({nombre, detalles, material, precio}) {
         .then((response)=>response.json())
         .then((data)=>setProducts(data))
     }, [])
- 
 
+ 
+  
   return(
       <>
         {products.map((productos, i) => {

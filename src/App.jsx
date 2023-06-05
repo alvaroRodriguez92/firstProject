@@ -13,27 +13,24 @@ import Navmui from "../components/Navmui/Navmui";
 import { render } from "react-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { theme } from "../Styles/styles";
-import AuthContextProvider  from "../context/AuthContext"
-
+import AuthContextProvider from "../context/AuthContext";
 
 function App() {
   return (
-    <AuthContextProvider>
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/products" element={<Products />} />
-            
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </ThemeProvider>
-    </AuthContextProvider>
-
+    <BrowserRouter>
+      <AuthContextProvider>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/products" element={<Products />} />
+            </Routes>
+          </div>
+        </ThemeProvider>
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 }
 

@@ -7,8 +7,9 @@ import Cards from "../../components/Cards/Cards";
 import UncontrolledExample from "../../components/Carousel/Carousel";
 import Nav from "../../components/Nav/Nav";
 import Garantias from "../../components/Garantias/Garantias";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import Navmui from "../../components/Navmui/Navmui";
+import Carrusel from "../../components/Carrusel/Carrusel";
 
 
 export default function Home() {
@@ -18,12 +19,14 @@ export default function Home() {
       <Navmui/>
       </header>
       <main className="principal">
+        <Box container width="90%" sx={{margin:"0 auto"}}>
       <Typography  sx={{pt:5, pb:5, textAlign: "center", textDecoration:"bold"}}variant="h4">Productos destacados</Typography>
 
       <Grid container spacing={4}>
       <Cards/>
       </Grid>
       <Garantias size={48} color={"pink"} />
+      </Box>
       </main>
       <footer>
         <Grid container sx={{backgroundColor: "#1C4E81;"}}>

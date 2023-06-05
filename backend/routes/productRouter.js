@@ -4,11 +4,7 @@ const productController = require("../controllers/productController")
 
 const productRouter = express.Router()
 
-productRouter.post("/upload", productController.uploadImage)
-
-productRouter.get("/image/:id", productController.getImage);
-
-productRouter.post("/", productController.addImage)
+productRouter.get("/:categoria", productController.getProductsByCategory)
 
 
 module.exports= productRouter
