@@ -6,7 +6,7 @@ const controller = {};
 controller.addUser = async (req, res) => {
   const { firstname, email, password } = req.body;
   console.log(req.body);
-  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+  // Si no hay alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!firstname || !email || !password)
     return res.status(400).send("Error al recibir el body");
   // Buscamos el usuario en la base de datos
@@ -24,12 +24,11 @@ controller.addUser = async (req, res) => {
 
 };
 
-//CONTROLADOR DE LOGIN????
-
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
   const { email, password } = req.body;
-  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+  console.log(email, password)
+  // Si no hay alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
 

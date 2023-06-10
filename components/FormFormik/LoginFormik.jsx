@@ -1,12 +1,13 @@
 import { useFormik } from "formik";
 import { FormSchema } from "./FormSchema";
 import { initialValues } from "./initialValues";
-import { TextField, Box, Button, Typography, Checkbox, Link } from "@mui/material";
+import { TextField, Box, Button, Typography, Checkbox } from "@mui/material";
 import { useAuthContext } from "../../context/AuthContext";
+import {Link} from "react-router-dom";
 
 export default function LoginFormik() {
 
-  const{login, logout, user} = useAuthContext()
+  const{login} = useAuthContext()
 
   const {
     values,
@@ -65,7 +66,7 @@ export default function LoginFormik() {
       />
       <span>Remember password <Checkbox/></span>
       <Button disabled={isSubmitting} type="submit" variant="contained" sx={{ mb: 2 }}>Login</Button>
-      <span>Si aún no tienes cuenta, puedes registrarte <Link href="/register">aquí.</Link></span>
+      <span>Si aún no tienes cuenta, puedes registrarte <Link to={"/register"}>aquí.</Link></span>
     </Box>
     </form>
     </>

@@ -1,10 +1,14 @@
-import { Button } from "@mui/material";
+import { Button, Badge } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {Link} from "react-router-dom"
+import { useCartContext } from "../../context/CartContext";
 
 
 export default function Carrito() {
+  const {carrito} = useCartContext()
+
   return (
-    <Button variant="contained" size="large" endIcon={<ShoppingCartIcon/>} sx={{m:2, mt:5, ml:"25%"}}>Carrito</Button>
+    <Link to={"/cart"}><Button variant="contained" size="large" endIcon={<Badge color="secondary" badgeContent={carrito}><ShoppingCartIcon/></Badge>} sx={{m:2, ml:20}}>Carrito</Button></Link>
   );
 }
 

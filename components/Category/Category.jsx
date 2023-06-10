@@ -41,7 +41,7 @@ export default function Category(){
           label="Category"
           onChange={handleChange}
         >
-            {categories.map((item)=><MenuItem value={item.numero}>{item.nombre}</MenuItem>)}
+            {categories.map((item,index)=><MenuItem key={index} value={item.numero}>{item.nombre}</MenuItem>)}
 
         </Select>
       </FormControl>

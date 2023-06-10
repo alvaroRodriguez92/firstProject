@@ -25,6 +25,8 @@ dao.updateUser = async (id, userData) => await userQueries.updateUser(id, userDa
 //DAO PARA PRODUCTOS:
 
 dao.getProductsByCategory = async (category) => await productQueries.getProductsByCategory(category)
+dao.getProductsByTipo = async (tipo) => await productQueries.getProductsByTipo(tipo)
+dao.getProductsByPelicula = async(pelicula) =>await productQueries.getProductsByPelicula(pelicula)
 
 
 module.exports = dao;

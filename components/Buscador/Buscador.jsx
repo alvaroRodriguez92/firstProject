@@ -1,31 +1,29 @@
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import {StyledTextField} from "../../Styles/StyledTextField"
+import {Link} from "react-router-dom"
+import {useState, useEffect} from "react"
+
 
 
 export default function Buscador() {
-  return (
-    <><TextField
+  const [pelicula, setPelicula] = useState("")
 
+  function handleInput(e){
+    setPelicula(e.target.value)
+  
+  }
+  console.log(pelicula)
+
+  return (
+    <><StyledTextField
       hiddenLabel
-      id="filled-hidden-label-small"
       placeholder="Inicia tu busqueda..."
-      variant="filled"
       size="small"
-      sx={{ width: "40%" }} /><SearchIcon sx={{ml:3, mr:6}}/></>
+      value={pelicula}
+      onChange={handleInput}
+      sx={{ width: "40%"  }} /><Link to={`/buscador/${pelicula}`}><SearchIcon sx={{ml:3, mr:6, color:"#fff"}}/></Link></>
   );
 }
 
-//   <div className="col-7">
-//   <div className="input-group">
-//     <input
-//       type="text"
-//       className="form-control"
-//       placeholder="Que necesitas buscar"
-//       aria-label="Recipient's username"
-//       aria-describedby="button-addon2"
-//     />
-//     <button className="btn btn-primary" type="button" id="button-addon2">
-//       Ir
-//     </button>
-//       </div>
-// </div>
+

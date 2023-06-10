@@ -15,11 +15,13 @@ export default function Products() {
       <header>
       <Navmui/>
       </header>
+      <main className="principal">
         <Category/>
       
       <Garantias size={48} color={"pink"} />
+      </main>
       <footer>
-        <Grid container sx={{backgroundColor: "#1C4E81;"}}>
+        <Grid container sx={{backgroundColor: "#0e0d0d;"}}>
           <Grid item xs={6} sx={{  pl:20, pt: 10, pb:10}}>
             <Privacidad size={28} />
           </Grid>

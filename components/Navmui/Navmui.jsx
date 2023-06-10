@@ -1,4 +1,5 @@
 import * as React from "react";
+import Carrito from "../Carrito/Carrito"
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,7 +19,6 @@ import { useAuthContext } from "../../context/AuthContext";
 
 const pages = [
   { nombre: "Products", link: "/products" },
-  { nombre: "Cart", link: "/cart" },
   { nombre: "Login", link: "/login" },
 ];
 // const links = "/login"
@@ -55,7 +55,6 @@ export default function Navmui() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
             
             sx={{
               mr: 2,
@@ -112,7 +111,6 @@ export default function Navmui() {
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -129,9 +127,9 @@ export default function Navmui() {
           <Buscador />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page.link} style={{textDecoration:'none'}}>
+              <Link key={page.nombre} to={page.link} style={{textDecoration:'none'}}>
               <Button
-                key={page.nombre}
+                
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
@@ -139,15 +137,18 @@ export default function Navmui() {
               </Button>
               </Link>
             ))}
+             <Carrito/>
           </Box>
 
           {user && (
             <Box sx={{ flexGrow: 0 }}>
+              
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar sx={{ width: 48, height: 48 }} alt="Remy Sharp" src="../../src/assets/avatarlogin.jpg" />
                 </IconButton>
               </Tooltip>
+              
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
@@ -170,8 +171,10 @@ export default function Navmui() {
                   </MenuItem>
                 ))}
               </Menu>
+              
             </Box>
           )}
+          
         </Toolbar>
       </Container>
     </AppBar>
